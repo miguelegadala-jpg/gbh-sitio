@@ -327,7 +327,17 @@ footer .seals span{font:500 .66rem/1 var(--mono);letter-spacing:.005em;border:1p
 
 /* Páginas */
 #viewHome [data-pg][hidden]{display:none!important}
-#viewHome:not([data-page="inicio"]){padding-top:78px}
+#viewHome:not([data-page="inicio"]){padding-top:70px}
+#viewHome .pg-first.sec{padding-top:clamp(3.4rem,5.5vw,4.6rem)}
+.pg-first .sec-head{align-items:center}
+.pg-ph{display:grid;grid-template-columns:1.25fr 1fr;gap:12px;margin-bottom:1.4rem}
+.pg-ph img{width:100%;height:clamp(150px,15vw,210px);object-fit:cover;border-radius:20px;display:block;box-shadow:0 18px 40px -26px rgba(0,46,109,.45)}
+.pg-ph img:nth-child(1){animation:phin .9s cubic-bezier(.2,.8,.2,1) both,phf1 7s ease-in-out 1s infinite}
+.pg-ph img:nth-child(2){margin-top:28px;animation:phin .9s .12s cubic-bezier(.2,.8,.2,1) both,phf2 8s ease-in-out 1.2s infinite}
+@keyframes phin{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes phf1{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes phf2{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+@media (max-width:820px){.pg-ph{margin:.4rem 0 1rem}.pg-ph img{height:150px}}
 .pgfade{animation:pgin .5s cubic-bezier(.2,.8,.2,1) both}
 @keyframes pgin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .explore{padding-top:clamp(3rem,6vw,5rem)}
@@ -505,6 +515,30 @@ footer .seals span{font:500 .66rem/1 var(--mono);letter-spacing:.005em;border:1p
 .anniv.go .d20 .an,.anniv.go .d20 .yr{animation:fin .8s 3s ease forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes fin{to{opacity:1}}
+.d20wrap{perspective:900px}
+.d20{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.d20 .shine{fill:url(#g20s);opacity:0;mix-blend-mode:screen}
+.anniv.go .d20 .shine{animation:fin .6s 3.3s ease forwards}
+.d20 .rings circle{fill:none;stroke:#fff;stroke-width:1.5;opacity:0;transform-box:fill-box;transform-origin:center}
+.d20 .rings .r1{stroke-dasharray:3 12}
+.d20 .rings .r2{stroke-dasharray:60 18;stroke-opacity:.6}
+.anniv.go .d20 .rings .r1{animation:ringin 1s 2.4s ease forwards,spin 40s linear 2.4s infinite}
+.anniv.go .d20 .rings .r2{animation:ringin 1s 2.6s ease forwards,spin 26s linear 2.6s infinite reverse}
+@keyframes ringin{from{opacity:0;transform:scale(.7)}to{opacity:.28;transform:scale(1)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.anniv.go .d20wrap .float{animation:f20 6s ease-in-out 3.6s infinite}
+@keyframes f20{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.anniv.go .d20 .sw{animation:draw 1s 2.6s cubic-bezier(.6,.1,.3,1) forwards,swg 2.8s ease-in-out 3.8s infinite}
+@keyframes swg{0%,100%{stroke-width:5;opacity:.9}50%{stroke-width:7;opacity:1}}
+.sparks{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.sparks i{position:absolute;bottom:-12px;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;background:rgba(255,255,255,.85);opacity:0;animation:rise var(--t) linear var(--d) infinite}
+.anniv:not(.go) .sparks i{animation-play-state:paused}
+@keyframes rise{0%{transform:translate(0,0);opacity:0}12%{opacity:.85}100%{transform:translate(var(--dx),-115%);opacity:0}}
+.anniv .burst{position:absolute;left:var(--bx,30%);top:var(--by,45%);width:8px;height:8px;pointer-events:none}
+.anniv .burst b{position:absolute;width:8px;height:8px;border-radius:2px;background:var(--c);opacity:0}
+.anniv.go .burst b{animation:pop 1.3s cubic-bezier(.2,.8,.2,1) 2.95s forwards}
+@keyframes pop{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(var(--px),var(--py)) rotate(var(--pr))}}
+@media (prefers-reduced-motion:reduce){.sparks,.anniv .burst{display:none}.d20 .rings circle{opacity:.28}}
 .anniv .after{opacity:0;transform:translateY(18px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
 .anniv.go .after{opacity:1;transform:none;transition-delay:var(--dl,3.1s)}
 .anniv img.lw{height:clamp(54px,7vw,84px);width:auto;margin-bottom:1.6rem}
@@ -844,14 +878,17 @@ footer .seals span{font:500 .66rem/1 var(--mono);letter-spacing:.005em;border:1p
 <section data-pg="nosotros" class="anniv" id="aniversario">
   <div class="in">
     <div class="d20wrap">
-      <svg class="d20" viewBox="0 0 520 410" aria-label="20 años, 2006 a 2026">
-        <defs><linearGradient id="g20" x1="0" y1="0" x2="0" y2="1"><stop offset=".25" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity=".5"/></linearGradient></defs>
+      <div class="float"><svg class="d20" viewBox="0 0 520 410" aria-label="20 años, 2006 a 2026">
+        <defs><linearGradient id="g20" x1="0" y1="0" x2="0" y2="1"><stop offset=".25" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity=".5"/></linearGradient>
+        <linearGradient id="g20s" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="160" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/><animateTransform attributeName="gradientTransform" type="translate" values="-260 0;760 0;760 0" keyTimes="0;.55;1" dur="4.2s" repeatCount="indefinite"/></linearGradient></defs>
+        <g class="rings"><circle class="r1" cx="230" cy="190" r="196"/><circle class="r2" cx="230" cy="190" r="160"/></g>
         <text class="fillt" x="6" y="280">20</text>
         <text class="stroke" x="6" y="280">20</text>
+        <text class="shine" x="6" y="280">20</text>
         <path class="sw" d="M14 318 C 140 350, 300 348, 440 306"/>
         <text class="an" x="12" y="392" data-i="an_y"></text>
-        <text class="yr" x="200" y="386">2006 — 2026</text>
-      </svg>
+        <text class="yr" x="200" y="386" id="d20yr">2006 — 2026</text>
+      </svg></div>
     </div>
     <div>
       <img class="lw after" src="assets/logo_white.webp" alt="GBH 20 years">
@@ -1359,7 +1396,13 @@ function setTL(i){ti=(i+TL.length)%TL.length;tlT=0;$$('#tl .tli').forEach((b,k)=
 tlEl.addEventListener('click',e=>{const b=e.target.closest('.tli');if(b){setTL(+b.dataset.k);tlHold=true;}});
 tlEl.addEventListener('pointerover',e=>{if(e.pointerType!=='mouse')return;const b=e.target.closest('.tli');if(b&&+b.dataset.k!==ti)setTL(+b.dataset.k);tlHold=true;});
 tlEl.addEventListener('pointerleave',()=>{tlHold=false;});
-function annivGo(){if(anniv.classList.contains('go'))return;anniv.classList.add('go');setTimeout(()=>{tlOn=true;},reduce?0:4300);}
+(function(){const sp=document.createElement('div');sp.className='sparks';sp.setAttribute('aria-hidden','true');let s='';for(let i=0;i<22;i++){s+=`<i style="--x:${Math.random()*100}%;--s:${2+Math.random()*5}px;--t:${7+Math.random()*8}s;--d:${-Math.random()*12}s;--dx:${(Math.random()*80-40)}px"></i>`;}sp.innerHTML=s;anniv.prepend(sp);
+  const bu=document.createElement('div');bu.className='burst';bu.setAttribute('aria-hidden','true');const cs=['#fff','#c4f5d6','#9be7ff','#ffe28a'];let b='';for(let i=0;i<26;i++){const a=Math.random()*Math.PI*2,r=90+Math.random()*170;b+=`<b style="--c:${cs[i%4]};--px:${Math.cos(a)*r}px;--py:${Math.sin(a)*r}px;--pr:${Math.random()*540-270}deg"></b>`;}bu.innerHTML=b;$('.d20wrap').appendChild(bu);
+  const w=$('.d20wrap'),sv=$('.d20');anniv.addEventListener('pointermove',e=>{if(reduce||e.pointerType!=='mouse')return;const r=w.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;sv.style.setProperty('--ry',(x*16).toFixed(2)+'deg');sv.style.setProperty('--rx',(-y*12).toFixed(2)+'deg');});
+  anniv.addEventListener('pointerleave',()=>{sv.style.setProperty('--ry','0deg');sv.style.setProperty('--rx','0deg');});})();
+let yrT=null;function yrCount(){const el=$('#d20yr');if(!el)return;clearInterval(yrT);if(reduce){el.textContent='2006 — 2026';return;}let y=2006;el.textContent='2006 — 2006';setTimeout(()=>{yrT=setInterval(()=>{y++;el.textContent='2006 — '+y;if(y>=2026)clearInterval(yrT);},55);},3000);}
+function annivGo(){if(anniv.classList.contains('go'))return;anniv.classList.add('go');yrCount();setTimeout(()=>{tlOn=true;},reduce?0:4300);}
+window.annivReplay=function(){anniv.classList.remove('go');tlOn=false;void anniv.offsetWidth;const o=new IntersectionObserver((es,ob)=>es.forEach(en=>{if(en.isIntersecting){annivGo();ob.disconnect();}}),{threshold:.3});setTimeout(()=>o.observe(anniv),80);};
 new IntersectionObserver((es,o)=>es.forEach(en=>{if(en.isIntersecting){annivGo();o.disconnect();}}),{threshold:.3}).observe(anniv);
 if(reduce)annivGo();
 (function tloop(now){const dt=Math.min(.1,(now-tlLast)/1000);tlLast=now;if(tlOn&&!tlHold&&!reduce){tlT+=dt;if(tlT>3.4)setTL(ti+1);}requestAnimationFrame(tloop);})(tlLast);
@@ -1529,11 +1572,14 @@ form.addEventListener('submit',e=>{
 
 /* ---------- Rutas (#inicio, #empleos, #empleo-id) ---------- */
 const PAGES=['inicio','soluciones','clientes','proceso','nosotros','cultura'];
+const PGIMG={soluciones:['ph_desk','ph_board'],clientes:['vf_meeting','ph_talk'],proceso:['ph_notes','vf_happy'],nosotros:['team0','ph_banner'],cultura:['team2','team1']};
 let curPage=null;
 function setPage(pg){const v=$('#viewHome');const was=curPage;curPage=pg;v.dataset.page=pg;
-  v.querySelectorAll(':scope > [data-pg]').forEach(s=>{s.hidden=!s.dataset.pg.split(' ').includes(pg);});
+  let first=null;v.querySelectorAll(':scope > [data-pg]').forEach(s=>{s.hidden=!s.dataset.pg.split(' ').includes(pg);s.classList.remove('pg-first');if(!s.hidden&&!first)first=s;});
+  $$('.pg-ph').forEach(x=>x.remove());
+  if(pg!=='inicio'&&first){first.classList.add('pg-first');const sh=first.querySelector('.sec-head');const ims=PGIMG[pg];if(sh&&ims){const p0=sh.querySelector(':scope > p');const box=document.createElement('div');const d=document.createElement('div');d.className='pg-ph';d.setAttribute('aria-hidden','true');d.innerHTML=ims.map(x=>`<img src="assets/${x}.jpg" alt="">`).join('');if(p0){box.appendChild(d);sh.insertBefore(box,p0);box.appendChild(p0);}}}
   $$('.nav ul a, #drawer a').forEach(a=>{const hh=(a.getAttribute('href')||'').slice(1);if(PAGES.includes(hh))a.setAttribute('aria-current',hh===pg&&shown==='home'?'page':'false');});
-  if(was!==pg){v.classList.remove('pgfade');void v.offsetWidth;v.classList.add('pgfade');dr.classList.remove('open');document.dispatchEvent(new Event('gbh:page'));setTimeout(()=>dispatchEvent(new Event('resize')),40);return true;}return false;}
+  if(was!==pg){if(pg==='nosotros'&&window.annivReplay)annivReplay();v.classList.remove('pgfade');void v.offsetWidth;v.classList.add('pgfade');dr.classList.remove('open');document.dispatchEvent(new Event('gbh:page'));setTimeout(()=>dispatchEvent(new Event('resize')),40);return true;}return false;}
 const views={home:$('#viewHome'),jobs:$('#viewJobs'),job:$('#viewJob'),svc:$('#viewSvc')};
 let shown=null;
 function show(v){if(shown===v)return false;Object.entries(views).forEach(([k,el])=>{el.hidden=k!==v;});views[v].classList.remove('view');void views[v].offsetWidth;views[v].classList.add('view');shown=v;$('#navJobs').setAttribute('aria-current',v==='jobs'||v==='job'?'page':'false');if(v!=='home'){curPage=null;$$('.nav ul a').forEach(a=>{if(a.id!=='navJobs')a.setAttribute('aria-current','false')});}return true;}
