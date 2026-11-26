@@ -272,13 +272,28 @@ h2{font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.06;letter-spacing:-.03em;fon
 .offices b{display:block;font:500 .72rem/1 var(--mono);letter-spacing:.005em;text-transform:none;color:var(--sky);margin-bottom:.6rem}
 
 footer.site{padding-block:3rem 2.5rem;color:var(--ink-2);font-size:.92rem;border-top:1px solid var(--line)}
-footer .cols{display:grid;grid-template-columns:1.4fr repeat(3,minmax(0,1fr));gap:2rem}
+footer .cols{display:grid;grid-template-columns:1.4fr repeat(3,minmax(0,1fr)) 1.3fr;gap:2rem}
+footer .social{display:flex;gap:.7rem}
+footer .base{align-items:center}
+@media (min-width:821px){footer .base{padding-right:88px}}
+footer .social a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+footer .social a svg{width:20px;height:20px}
+footer .social a:hover{transform:translateY(-4px) scale(1.06)}
+footer .s-li{background:#0a66c2}footer .s-li:hover{box-shadow:0 10px 22px -8px #0a66c2}
+footer .s-ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285aeb 92%)}footer .s-ig:hover{box-shadow:0 10px 22px -8px #d6249f}
+footer .s-fb{background:#1877f2}footer .s-fb:hover{box-shadow:0 10px 22px -8px #1877f2}
+footer .s-gd{background:#0caa41}footer .s-gd:hover{box-shadow:0 10px 22px -8px #0caa41}
+footer .fcontact a{display:flex;flex-direction:column;gap:.15rem}
+footer .fcontact small{font-size:.75rem;color:var(--ink-2);opacity:.85}
+a.seal{text-decoration:none;color:inherit;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+a.seal:hover{transform:translateY(-4px)}
 footer h4{font:500 .72rem/1 var(--mono);letter-spacing:.005em;text-transform:none;color:var(--ink);margin:0 0 1rem}
 footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.45rem}
 footer a{text-decoration:none}footer a:hover{color:var(--navy)}
 footer .base{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.82rem}
 footer .seals{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.2rem}
 footer .seals span{font:500 .66rem/1 var(--mono);letter-spacing:.005em;border:1px solid var(--line);border-radius:999px;padding:.45rem .6rem}
+@media (max-width:1000px){footer .cols{grid-template-columns:1fr 1fr 1fr}}
 @media (max-width:820px){footer .cols{grid-template-columns:1fr 1fr}}
 
 /* ---------- Asistente IA ---------- */
@@ -1166,11 +1181,11 @@ html.vt .rv{transition:none!important}
   <div class="in">
     <div class="hd rv"><div><div class="eyebrow" data-i="se_eb"></div><h2 data-i="se_h"></h2></div></div>
     <div class="seal-row">
-      <div class="seal rv"><img src="assets/seal_aenor.png" alt="AENOR · ISO 27001"><span data-i="se1"></span></div>
-      <div class="seal rv"><img src="assets/seal_iqnet.png" alt="IQNet"><span data-i="se2"></span></div>
-      <div class="seal rv"><img src="assets/seal_gptw.png" alt="Great Place to Work · Best Workplaces 2024"><span data-i="se3"></span></div>
-      <div class="seal rv"><img src="assets/seal_efy.png" alt="EFY Tech"><span data-i="se4"></span></div>
-      <div class="seal topbox rv"><div class="tt">TOP</div><ul><li>2DO <small>(2023)</small></li><li>1RO <small>(2022)</small></li><li>2DO <small>(2021)</small></li></ul><span>EFY Tech</span></div>
+      <a class="seal rv" href="https://www.aenor.com/certificaciones#/certificado?codigo=228602" target="_blank" rel="noopener"><img src="assets/seal_aenor.png" alt="AENOR · ISO 27001"><span data-i="se1"></span></a>
+      <a class="seal rv" href="https://database.iqnet-certification.com/advanced-search?field_organisation_value=soluciones+gadala&status_1=1" target="_blank" rel="noopener"><img src="assets/seal_iqnet.png" alt="IQNet"><span data-i="se2"></span></a>
+      <a class="seal rv" href="https://greatplacetoworkcarca.com/en/gbh/" target="_blank" rel="noopener"><img src="assets/seal_gptw.png" alt="Great Place to Work · Best Workplaces 2024"><span data-i="se3"></span></a>
+      <a class="seal rv" href="https://www.efy.global/empresa/gbh-do?r=14&st=general" target="_blank" rel="noopener"><img src="assets/seal_efy.png" alt="EFY Tech"><span data-i="se4"></span></a>
+      <a class="seal topbox rv" href="https://www.efy.global/empresa/gbh-do?r=14&amp;st=general" target="_blank" rel="noopener"><div class="tt">TOP</div><ul><li>2DO <small>(2023)</small></li><li>1RO <small>(2022)</small></li><li>2DO <small>(2021)</small></li></ul><span>EFY Tech</span></a>
     </div>
   </div>
 </section>
@@ -1180,10 +1195,11 @@ html.vt .rv{transition:none!important}
     <div class="cols">
       <div><img src="assets/logo.webp" alt="GBH" style="height:46px;width:auto"><p style="max-width:30ch;margin-top:1rem" data-i="f_txt"></p></div>
       <div><h4 data-i="f_h1"></h4><ul><li><a href="#servicio-estrategia-de-producto" data-i="fl1"></a></li><li><a href="#servicio-ingenieria-de-software" data-i="fl2"></a></li><li><a href="#servicio-administracion-de-cloud" data-i="fl3"></a></li></ul></div>
-      <div><h4 data-i="f_h2"></h4><ul><li><a href="#nosotros" data-i="fl4"></a></li><li><a href="#clientes" data-i="fl5"></a></li><li><a href="https://gbh.tech/es/blog/" target="_blank" rel="noopener" data-i="fl6"></a></li></ul></div>
+      <div><h4 data-i="f_h2"></h4><ul><li><a href="#nosotros" data-i="fl4"></a></li><li><a href="#clientes" data-i="fl5"></a></li><li><a href="https://gbh.tech/blog/" target="_blank" rel="noopener" data-i="fl6"></a></li></ul></div>
       <div><h4 data-i="f_h3"></h4><ul><li><a href="#cultura" data-i="fl7"></a></li><li><a href="#empleos" data-i="fl8"></a></li><li><a href="#referir" data-i="fl9"></a></li></ul></div>
+      <div class="fcontact"><h4 data-i="f_h4"></h4><ul><li><a href="tel:18094125947"><small data-i="c_rd"></small>+1 (809) 412-5947</a></li><li><a href="tel:19283665947"><small data-i="c_us"></small>+1 (928) 366-5947</a></li><li><a href="https://www.google.com/maps/place/Soluciones+GBH/@18.472236,-69.9249419,17z" target="_blank" rel="noopener"><small data-i="c_addr"></small>Av. Roberto Pastoriza #60, Santo Domingo</a></li></ul></div>
     </div>
-    <div class="base"><span>© 2026 GBH. <span data-i="slogan"></span>.</span><span data-i="f_note"></span></div>
+    <div class="base"><span>© 2026 GBH. <span data-i="slogan"></span>.</span><div class="social"><a class="s-li" href="https://do.linkedin.com/company/gbh" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a><a class="s-ig" href="https://www.instagram.com/gbh.tech/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a><a class="s-fb" href="https://www.facebook.com/solucionesgbh" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.87.25-1.46 1.5-1.46h1.6V4.46A21 21 0 0 0 14.27 4.3c-2.3 0-3.87 1.4-3.87 3.97v2.23H7.8v3h2.6V21z"/></svg></a><a class="s-gd" href="https://www.glassdoor.com/Overview/Working-at-GBH-EI_IE2011924.11,14.htm" target="_blank" rel="noopener" aria-label="Glassdoor"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 19.2H5.1c0 1.6 1.3 2.8 2.9 2.8h8.6c1.6 0 2.9-1.3 2.9-2.8V7.5c0-.1-.1-.1-.1-.1h-2.7c-.1 0-.1 0-.1.1zM16.6 2H8c-1.6 0-2.9 1.3-2.9 2.8v11.7c0 .1 0 .1.1.1h2.7c.1 0 .1 0 .1-.1V4.8h8.6z"/></svg></a></div></div>
   </div>
 </footer>
 
