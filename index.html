@@ -436,6 +436,18 @@ html.vt .rv{transition:none!important}
 .ex-card:hover img{transform:scale(1.06)}
 .ex-card:hover::after{background:linear-gradient(180deg,rgba(0,46,109,.1) 10%,rgba(0,46,109,.88) 100%)}
 .ex-card:hover .ex-go{background:var(--grad);color:#fff;transform:translateX(3px)}
+.ex-card{transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s}
+.ex-card::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:inherit;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.28) 48%,transparent 62%);transform:translateX(-120%);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.ex-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px -28px rgba(0,174,66,.7),0 0 0 2px #00ae42}
+.ex-card:hover::before{transform:translateX(120%)}
+.ex-card:hover::after{background:linear-gradient(180deg,rgba(0,174,66,.05) 15%,rgba(0,120,70,.55) 60%,rgba(0,110,60,.92) 100%)}
+.ex-card .ex-tx{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.ex-card:hover .ex-tx{transform:translateY(-6px)}
+.ex-card b{transition:letter-spacing .5s}
+.ex-card:hover .ex-go{background:#00ae42;color:#fff;transform:translateX(4px) scale(1.12);box-shadow:0 0 0 6px rgba(0,174,66,.25)}
+.ex-card:hover .ex-go svg{animation:exNudge .9s ease-in-out infinite}
+@keyframes exNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(3px)}}
+@media (hover:none){.ex-card:hover{transform:none}}
 @media (max-width:900px){.ex-grid{grid-template-columns:1fr 1fr}.ex-card,.ex-card.big{grid-column:span 1;height:230px}.ex-card.big{grid-column:span 2}}
 @media (max-width:560px){.ex-grid{grid-template-columns:1fr;gap:10px}.ex-card,.ex-card.big{grid-column:span 1;height:200px}.ex-card b,.ex-card.big b{font-size:1.3rem}}
 /* Agendar llamada */
