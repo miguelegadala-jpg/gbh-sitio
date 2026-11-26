@@ -372,11 +372,11 @@ footer .seals span{font:500 .66rem/1 var(--mono);letter-spacing:.005em;border:1p
 #aiFab{view-transition-name:gbhai}
 ::view-transition{background:#fff}
 ::view-transition-group(gbhnav),::view-transition-group(gbhwa),::view-transition-group(gbhai){animation:none}
-::view-transition-old(root){animation:vtOut .42s cubic-bezier(.4,0,1,1) both}
-::view-transition-new(root){animation:vtIn .8s cubic-bezier(.32,.72,0,1) .1s both}
-@keyframes vtOut{to{opacity:0;transform:scale(.985) translateY(-10px);filter:blur(6px)}}
-@keyframes vtIn{from{opacity:0;transform:translateY(26px) scale(1.01);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
-html.vt .pgfade{animation:none}
+::view-transition-old(root){animation:vtOut .3s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:vtIn .75s cubic-bezier(.32,.72,0,1) .26s both}
+@keyframes vtOut{0%{opacity:1;transform:none;filter:blur(0)}100%{opacity:0;transform:translateY(-8px);filter:blur(4px)}}
+@keyframes vtIn{0%{opacity:0;transform:translateY(22px);filter:blur(6px)}100%{opacity:1;transform:none;filter:blur(0)}}
+html.vt .rv{transition:none!important}
 @media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
 /* Páginas */
 #viewHome [data-pg][hidden]{display:none!important}
@@ -1646,7 +1646,7 @@ function route(){
   if(k)rkCur=k;
   if(!go){routeNow();return;}
   const R=document.documentElement;R.classList.add('vt');
-  document.startViewTransition(()=>routeNow()).finished.finally(()=>R.classList.remove('vt'));
+  document.startViewTransition(()=>{routeNow();const v=$('#viewHome');v.classList.remove('pgfade');$$('.pg-ph img').forEach((im,i)=>{im.style.animation=i?'phf2 8s ease-in-out 1.2s infinite':'phf1 7s ease-in-out 1s infinite';});$$('#viewHome .rv.pre').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight){el.classList.remove('pre');el.classList.add('shown');}});}).finished.finally(()=>R.classList.remove('vt'));
 }
 function routeNow(){
   const h=location.hash.slice(1); arm($('#sellos'));
