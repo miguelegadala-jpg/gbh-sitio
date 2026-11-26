@@ -473,17 +473,26 @@ html.vt .rv{transition:none!important}
 .search{flex:1 1 220px;display:flex;align-items:center;gap:.5rem;border:1px solid var(--line);border-radius:999px;padding:.2rem .4rem .2rem 1rem;background:#fff;min-width:0}
 .search input{all:unset;flex:1;min-width:0;padding:.55rem 0;font:400 .95rem var(--body)}
 .search svg{width:18px;height:18px;color:var(--ink-2)}
-.jobs{display:flex;flex-direction:column;gap:.8rem}
-.job{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:center;padding:1.4rem 1.5rem;border:1px solid var(--line);border-radius:20px;background:#fff;text-decoration:none;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s,border-color .4s}
-.job:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#c9dbe9}
-.job h3{font-size:1.2rem;letter-spacing:-.01em;margin-bottom:.55rem}
-.job .meta{display:flex;flex-wrap:wrap;gap:.45rem}
+.jobs{display:flex;flex-direction:column;border-top:1px solid var(--ink)}
+.jhead{display:grid;grid-template-columns:minmax(0,1fr) 13rem 11rem 8rem 2.4rem;gap:1.5rem;padding:.9rem .4rem;font:500 .85rem/1 var(--body);color:var(--ink-2);border-bottom:1px solid var(--line)}
+.job{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 13rem 11rem 8rem 2.4rem;gap:1.5rem;align-items:center;padding:1.6rem .4rem;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);transition:background .35s,padding .45s cubic-bezier(.2,.8,.2,1)}
+.job::before{content:"";position:absolute;left:0;top:-1px;height:2px;width:0;background:var(--grad);transition:width .55s cubic-bezier(.2,.8,.2,1)}
+.job:hover{background:linear-gradient(90deg,rgba(0,174,66,.045),rgba(0,167,225,.03) 60%,transparent);padding-left:1rem}
+.job:hover::before{width:100%}
+.job h3{font-size:1.25rem;letter-spacing:-.015em;margin:0 0 .35rem;transition:color .3s}
+.job:hover h3{color:var(--navy)}
+.job .sub{font-size:.92rem;color:var(--ink-2)}
+.job .sub em{font-style:normal;color:#9a5b00;margin-left:.7rem}
+.job .c{font-size:.98rem;color:var(--ink)}
+.job .c.dep{color:var(--green-ink);font-weight:500}
+.job .c.dt{color:var(--ink-2);font-size:.92rem}
+.job .go{color:var(--navy);display:grid;place-items:center;opacity:.35;transform:translateX(-6px);transition:opacity .3s,transform .45s cubic-bezier(.2,.8,.2,1)}
+.job:hover .go{opacity:1;transform:none}
+.job .go svg{width:22px;height:22px}
+@media (max-width:900px){.jhead{display:none}.job{grid-template-columns:auto 1fr auto;grid-template-areas:"dep dep go" "t t go" "s s go" "ty dt go";gap:.25rem .9rem;padding:1.2rem .2rem}.job:hover{padding-left:.6rem}.job>div{grid-area:t}.job h3{font-size:1.12rem;margin:0}.job .sub{display:inline}.job>div .sub{display:block;margin-top:.2rem}.job .c{font-size:.88rem}.job .c.dep{grid-area:dep;font-size:.82rem}.job .c:not(.dep):not(.dt){grid-area:ty}.job .c.dt{grid-area:dt;font-size:.88rem}.job .go{grid-area:go}}
 .tagp{font:500 .72rem/1 var(--mono);letter-spacing:.005em;padding:.42rem .6rem;border-radius:999px;background:var(--sky-50);color:var(--navy)}
 .tagp.g{background:#e3f6ea;color:var(--green-ink)}
 .tagp.o{background:#fff4e0;color:#9a5b00}
-.job .go{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:var(--navy);transition:background .3s,color .3s,border-color .3s}
-.job:hover .go{background:var(--grad);color:#fff;border-color:transparent}
-.job .go svg{width:18px;height:18px}
 .empty{padding:2rem;text-align:center;color:var(--ink-2);border:1px dashed var(--line);border-radius:20px}
 .ref{margin-top:2rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;padding:1.6rem 1.8rem;border-radius:24px;background:var(--grad);color:#fff}
 .ref h3{color:#fff;font-size:1.4rem}.ref p{margin:.3rem 0 0;color:rgba(255,255,255,.9)}
@@ -1593,7 +1602,7 @@ const fmtDate=d=>new Intl.DateTimeFormat(L,{day:'numeric',month:'short',year:'nu
 const tags=j=>`<span class="tagp">${t('remote')}</span><span class="tagp">${t(j.type)}</span><span class="tagp">${j.exp} ${t('yrs')}</span>${j.latam?`<span class="tagp o">${t('latam')}</span>`:''}`;
 function renderJobs(){
   const list=JOBS.filter(j=>(fDep==='all'||j.dep===fDep)&&(fType==='all'||j.type===fType)&&j.title.toLowerCase().includes(q.toLowerCase()));
-  $('#jobList').innerHTML=list.length?list.map(j=>`<a class="job" href="#empleo-${j.id}"><div style="min-width:0"><h3>${j.title}</h3><div class="meta"><span class="tagp g">${t(j.dep)}</span>${tags(j)}<span class="tagp" style="background:none;color:var(--ink-2)">${t('posted')} ${fmtDate(j.date)}</span></div></div><span class="go" aria-label="${t('view')}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>`).join(''):`<div class="empty">${t('none')}</div>`;
+  $('#jobList').innerHTML=list.length?`<div class="jhead" aria-hidden="true"><span>${t('jb_role')}</span><span>${t('dep')}</span><span>${t('type')}</span><span>${t('date')}</span><span></span></div>`+list.map(j=>`<a class="job" href="#empleo-${j.id}"><div style="min-width:0"><h3>${j.title}</h3><div class="sub">${j.exp} ${t('yrs')}${j.latam?`<em>${t('latam')}</em>`:''}</div></div><span class="c dep">${t(j.dep)}</span><span class="c">${t(j.type)}, ${t('remote').toLowerCase()}</span><span class="c dt">${fmtDate(j.date)}</span><span class="go" aria-label="${t('view')}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>`).join(''):`<div class="empty">${t('none')}</div>`;
 }
 function renderJob(j){
   $('#jdDep').textContent=t(j.dep); $('#jdTitle').textContent=j.title; $('#jdMeta').innerHTML=tags(j);
