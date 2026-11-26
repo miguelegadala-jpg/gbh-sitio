@@ -368,13 +368,13 @@ footer .seals span{font:500 .66rem/1 var(--mono);letter-spacing:.005em;border:1p
 @media (max-width:560px){.ptx-grid,.ptx-grid.c3{grid-template-columns:1fr}.ptx-card,.ptx-grid.c3 .ptx-card:first-child{flex-direction:row}.ptx-card .im,.ptx-grid.c3 .ptx-card:first-child .im{aspect-ratio:auto;width:92px;min-height:0;flex:none}.ptx-card .bd,.ptx-grid.c3 .ptx-card:first-child .bd{padding:.85rem}.ptx-card b,.ptx-grid.c3 .ptx-card:first-child b{font-size:1rem}.ptx-grid.c3 .ptx-card:first-child small{-webkit-line-clamp:2;font-size:.84rem}.ptx-head .n{font-size:2.4rem}.ptx-panel{padding:1rem}}
 /* Transición entre páginas (View Transitions) */
 ::view-transition{background:linear-gradient(125deg,#00ae42 0%,#00a7e1 55%,#002e6d 100%)}
-::view-transition-old(root),::view-transition-new(root){mix-blend-mode:normal;animation-duration:.95s}
-::view-transition-old(root){animation:vtOld .95s cubic-bezier(.65,0,.25,1) both;transform-origin:50% 40%}
-::view-transition-new(root){animation:vtNew .95s cubic-bezier(.7,0,.2,1) both}
+::view-transition-old(root),::view-transition-new(root){mix-blend-mode:normal;animation-duration:1.45s}
+::view-transition-old(root){animation:vtOld 1.45s cubic-bezier(.45,0,.2,1) both;transform-origin:50% 40%}
+::view-transition-new(root){animation:vtNew 1.45s cubic-bezier(.55,0,.15,1) both}
 @keyframes vtOld{0%{transform:none;clip-path:inset(0 round 0);filter:none;opacity:1}
-  45%{transform:scale(.86) translateY(-1.5%);clip-path:inset(0 round 36px);filter:saturate(.6) blur(1px);opacity:1}
-  100%{transform:scale(.8) translateY(-4%);clip-path:inset(0 round 44px);filter:saturate(.3) blur(4px);opacity:.35}}
-@keyframes vtNew{0%,30%{clip-path:circle(0 at var(--vx,50%) var(--vy,40%))}
+  45%{transform:scale(.88) translateY(-1.5%);clip-path:inset(0 round 36px);filter:saturate(.7);opacity:1}
+  100%{transform:scale(.82) translateY(-3%);clip-path:inset(0 round 44px);filter:saturate(.4) blur(3px);opacity:.4}}
+@keyframes vtNew{0%,28%{clip-path:circle(0 at var(--vx,50%) var(--vy,40%))}
   100%{clip-path:circle(150vmax at var(--vx,50%) var(--vy,40%))}}
 html.vt .pgfade{animation:none}
 @media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
