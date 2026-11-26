@@ -100,3 +100,4 @@ es:{n_about:"Nosotros",ex_eb:"Explora GBH",ex_h:"Elige por dónde empezar.",ex_p
 en:{n_about:"About us",ex_eb:"Explore GBH",ex_h:"Choose where to start.",ex_p:"Each part of GBH has its own page. Go straight to what you need.",ex1t:"Solutions",ex1d:"Strategy, product engineering and cloud & IT operations.",ex2t:"How we work",ex2d:"From the first coffee to the first deploy, in 3 weeks.",ex3t:"About us",ex3d:"20 years, our story and our team around the world.",ex4t:"Culture",ex4d:"The people behind GBH and what it is like to work here.",ex5t:"Careers",ex5d:"Open roles and how to apply."},
 pt:{n_about:"Sobre nós"},fr:{n_about:"À propos"},de:{n_about:"Über uns"},it:{n_about:"Chi siamo"}
 };for(const l in X){if(T[l])Object.assign(T[l],X[l]);}})();
+(function(){const X={es:{ptx_n:"servicios"},en:{ptx_n:"services"},pt:{ptx_n:"serviços"},fr:{ptx_n:"services"},de:{ptx_n:"Services"},it:{ptx_n:"servizi"}};for(const l in X){if(T[l])Object.assign(T[l],X[l]);}})();

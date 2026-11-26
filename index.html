@@ -325,6 +325,47 @@ footer .seals span{font:500 .66rem/1 var(--mono);letter-spacing:.005em;border:1p
 .ai-disc{font:500 .62rem/1.4 var(--mono);letter-spacing:.005em;color:var(--ink-2);text-align:center;padding:0 1rem .6rem}
 @media (max-width:520px){.ai-panel{right:0;bottom:0;width:100vw;height:min(88svh,680px);border-radius:24px 24px 0 0}}
 
+/* Soluciones: selector de pilares */
+.ptx{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);gap:clamp(1rem,2.4vw,2rem);align-items:start}
+.ptx-nav{display:flex;flex-direction:column;gap:.7rem;position:sticky;top:96px}
+.ptx-tab{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:.95rem;align-items:start;padding:1.15rem 1.2rem 1.25rem;border-radius:20px;background:transparent;border:1px solid transparent;overflow:hidden;transition:background .4s,border-color .4s,box-shadow .4s}
+.ptx-tab:hover{background:rgba(255,255,255,.6)}
+.ptx-tab[aria-selected="true"]{background:#fff;border-color:var(--line);box-shadow:0 20px 44px -30px rgba(0,46,109,.5)}
+.ptx-tab .ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:#e3eef8;color:var(--navy);transition:background .4s,color .4s}
+.ptx-tab[aria-selected="true"] .ico{background:var(--grad);color:#fff}
+.ptx-tab .ico svg{width:23px;height:23px}
+.ptx-tab b{display:block;font:600 1.18rem/1.2 var(--display);letter-spacing:-.015em;color:var(--navy-900)}
+.ptx-tab .ds{display:block;font-size:.9rem;line-height:1.45;color:var(--ink-2);margin-top:.35rem;max-height:0;opacity:0;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.8,.2,1),opacity .4s}
+.ptx-tab[aria-selected="true"] .ds{max-height:6em;opacity:1}
+.ptx-tab .ct{display:inline-block;margin-top:.55rem;font:600 .78rem/1 var(--display);color:var(--green-ink);background:#e3f6ea;padding:.38rem .6rem;border-radius:999px}
+.ptx-tab .bar{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--grad)}
+.ptx-tab[aria-selected="true"] .bar{animation:ptxbar var(--pt,7s) linear forwards}
+.ptx.hold .ptx-tab .bar{animation:none;width:0}
+@keyframes ptxbar{to{width:100%}}
+.ptx-panel{position:relative;border-radius:28px;background:#fff;border:1px solid var(--line);padding:clamp(1.2rem,2.4vw,1.8rem);box-shadow:0 30px 60px -44px rgba(0,46,109,.45);min-height:100%}
+.ptx-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;margin-bottom:1.2rem}
+.ptx-head h3{font:600 clamp(1.4rem,2.4vw,1.9rem)/1.1 var(--display);letter-spacing:-.025em;color:var(--navy-900);margin:0}
+.ptx-head .n{font:600 3.2rem/1 var(--display);letter-spacing:-.04em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
+.ptx-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.ptx-grid.c3 .ptx-card:first-child{grid-column:1/-1;flex-direction:row}
+.ptx-grid.c3 .ptx-card:first-child .im{aspect-ratio:auto;width:48%;flex:none;min-height:200px}
+.ptx-grid.c3 .ptx-card:first-child .bd{align-items:end;padding:1.4rem}
+.ptx-grid.c3 .ptx-card:first-child b{font-size:1.35rem}
+.ptx-grid.c3 .ptx-card:first-child small{-webkit-line-clamp:4;font-size:.92rem}
+.ptx-card{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);border-radius:20px;overflow:hidden;background:#f4f8fc;border:1px solid #e3edf6;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s,border-color .45s;animation:ptxin .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*70ms)}
+@keyframes ptxin{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.ptx-card .im{position:relative;aspect-ratio:16/10;overflow:hidden}
+.ptx-card .im img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.ptx-card .bd{display:grid;grid-template-columns:minmax(0,1fr) 38px;gap:.6rem;align-items:end;padding:1rem 1.05rem 1.1rem;flex:1}
+.ptx-card b{font:600 1.08rem/1.25 var(--display);color:var(--navy);letter-spacing:-.01em;display:block}
+.ptx-card small{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:.84rem;line-height:1.4;color:#3d5573;margin-top:.3rem}
+.ptx-card .go{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid #d3e3f1;color:var(--green);transition:background .35s,color .35s,transform .35s,border-color .35s}
+.ptx-card .go svg{width:16px;height:16px}
+.ptx-card:hover{transform:translateY(-4px);border-color:var(--green);box-shadow:0 22px 40px -26px rgba(0,46,109,.5);background:#fff}
+.ptx-card:hover .im img{transform:scale(1.06)}
+.ptx-card:hover .go{background:var(--grad);color:#fff;border-color:transparent;transform:translateX(3px)}
+@media (max-width:900px){.ptx{grid-template-columns:1fr}.ptx-nav{position:static;flex-direction:row;overflow-x:auto;scrollbar-width:none;gap:.5rem;margin:0 calc(-1*var(--gut-l,16px));padding:0 var(--gut-l,16px) .2rem}.ptx-nav::-webkit-scrollbar{display:none}.ptx-tab{flex:0 0 auto;grid-template-columns:36px auto;padding:.7rem .9rem;align-items:center}.ptx-tab .ico{width:36px;height:36px;border-radius:11px}.ptx-tab .ico svg{width:18px;height:18px}.ptx-tab b{font-size:.98rem;white-space:nowrap}.ptx-tab .ds,.ptx-tab .ct{display:none}}
+@media (max-width:560px){.ptx-grid,.ptx-grid.c3{grid-template-columns:1fr}.ptx-card,.ptx-grid.c3 .ptx-card:first-child{flex-direction:row}.ptx-card .im,.ptx-grid.c3 .ptx-card:first-child .im{aspect-ratio:auto;width:92px;min-height:0;flex:none}.ptx-card .bd,.ptx-grid.c3 .ptx-card:first-child .bd{padding:.85rem}.ptx-card b,.ptx-grid.c3 .ptx-card:first-child b{font-size:1rem}.ptx-grid.c3 .ptx-card:first-child small{-webkit-line-clamp:2;font-size:.84rem}.ptx-head .n{font-size:2.4rem}.ptx-panel{padding:1rem}}
 /* Páginas */
 #viewHome [data-pg][hidden]{display:none!important}
 #viewHome:not([data-page="inicio"]){padding-top:70px}
@@ -905,23 +946,7 @@ footer .seals span{font:500 .66rem/1 var(--mono);letter-spacing:.005em;border:1p
       <div><div class="eyebrow" data-i="so_eb"></div><h2 data-i="so_h"></h2></div>
       <p data-i="so_p"></p>
     </div>
-    <div class="pillars">
-      <article class="pillar rv">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.6 7.1 18.2l.9-5.5-4-3.9 5.5-.8z"/></svg></div>
-        <h3 data-i="p1t"></h3><p data-i="p1d"></p>
-        <ul><li><a href="#servicio-estrategia-de-producto" data-i="l1"></a></li><li><a href="#servicio-diseno-de-producto" data-i="l2"></a></li></ul>
-      </article>
-      <article class="pillar rv">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div>
-        <h3 data-i="p2t"></h3><p data-i="p2d"></p>
-        <ul><li><a href="#servicio-ingenieria-de-software" data-i="l3"></a></li><li><a href="#servicio-devops-e-ingenieria-de-plataforma" data-i="l4"></a></li><li><a href="#servicio-qa-automatizado" data-i="l5"></a></li></ul>
-      </article>
-      <article class="pillar rv">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 18a4 4 0 01-.6-8A6 6 0 0118 9a4.5 4.5 0 01-.5 9z"/><path d="M12 12v6M9 15l3 3 3-3"/></svg></div>
-        <h3 data-i="p3t"></h3><p data-i="p3d"></p>
-        <ul><li><a href="#servicio-servicios-gestionados-de-it" data-i="l6"></a></li><li><a href="#servicio-administracion-de-cloud" data-i="l7"></a></li><li><a href="#servicio-continuidad-de-negocio-y-recuperacion-ante-desastres" data-i="l8"></a></li><li><a href="#servicio-microsoft-365" data-i="l9"></a></li></ul>
-      </article>
-    </div>
+    <div class="ptx rv" id="ptx"></div>
   </div>
 </section>
 
@@ -1484,11 +1509,28 @@ async function ask(q){if(ai.busy)return;ai.busy=true;ai.send.disabled=true;ai.su
 
 
 /* ---------- Videos y reel ---------- */
-function renderPL(){const ar='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-  $$('.pillar ul').forEach(ul=>{let hd=ul.querySelector('.ul-h');if(!hd){hd=document.createElement('li');hd.className='ul-h';hd.setAttribute('aria-hidden','true');ul.prepend(hd);}hd.textContent=t('pl_h');});
-  $$('.pillar li a[href^="#servicio-"]').forEach(a=>{const slug=a.getAttribute('href').slice(10);const sv=SERVICES.find(x=>x.slug===slug);if(!sv)return;const c=svT(sv);const im=(SVIMG[slug]||['ph_desk'])[0];
-    if(a.dataset.i){a.dataset.pl=a.dataset.i;delete a.dataset.i;}const label=t(a.dataset.pl);
-    a.innerHTML=`<img src="assets/${im}.jpg" alt="" loading="lazy"><span class="tx"><b></b><small></small></span><i class="go">${ar}</i>`;a.querySelector('b').textContent=label;a.querySelector('small').textContent=c.lead;a.setAttribute('aria-label',label);});}
+const PILL=[
+ {t:'p1t',d:'p1d',ico:'<path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.6 7.1 18.2l.9-5.5-4-3.9 5.5-.8z"/>',s:[['estrategia-de-producto','l1'],['diseno-de-producto','l2']]},
+ {t:'p2t',d:'p2d',ico:'<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>',s:[['ingenieria-de-software','l3'],['devops-e-ingenieria-de-plataforma','l4'],['qa-automatizado','l5']]},
+ {t:'p3t',d:'p3d',ico:'<path d="M7 18a4 4 0 01-.6-8A6 6 0 0118 9a4.5 4.5 0 01-.5 9z"/><path d="M12 12v6M9 15l3 3 3-3"/>',s:[['servicios-gestionados-de-it','l6'],['administracion-de-cloud','l7'],['continuidad-de-negocio-y-recuperacion-ante-desastres','l8'],['microsoft-365','l9']]}];
+let ptxI=0,ptxTimer=null;const PTX_MS=7000;
+function ptxPanel(){const P=PILL[ptxI];const ar='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  const cards=P.s.map(([slug,k],i)=>{const sv=SERVICES.find(x=>x.slug===slug);const c=sv?svT(sv):{lead:''};const im=(SVIMG[slug]||['ph_desk'])[0];return `<a class="ptx-card" style="--i:${i}" href="#servicio-${slug}"><span class="im"><img src="assets/${im}.jpg" alt="" loading="lazy"></span><span class="bd"><span><b></b><small></small></span><i class="go">${ar}</i></span></a>`;}).join('');
+  const pn=$('#ptxPanel');pn.innerHTML=`<div class="ptx-head"><h3></h3><span class="n">0${ptxI+1}</span></div><div class="ptx-grid ${P.s.length===3?'c3':''}">${cards}</div>`;
+  pn.querySelector('h3').textContent=t(P.t);
+  pn.querySelectorAll('.ptx-card').forEach((a,i)=>{const [slug,k]=P.s[i];const sv=SERVICES.find(x=>x.slug===slug);a.querySelector('b').textContent=t(k);a.querySelector('small').textContent=sv?svT(sv).lead:'';a.setAttribute('aria-label',t(k));});
+  $$('#ptx .ptx-tab').forEach((b,i)=>{b.setAttribute('aria-selected',String(i===ptxI));b.tabIndex=i===ptxI?0:-1;});}
+function ptxGo(i,user){ptxI=(i+PILL.length)%PILL.length;ptxPanel();clearTimeout(ptxTimer);const box=$('#ptx');if(user)box.classList.add('hold');if(!box.classList.contains('hold')&&!reduce)ptxTimer=setTimeout(()=>ptxGo(ptxI+1),PTX_MS);}
+function renderPL(){const box=$('#ptx');if(!box)return;
+  box.style.setProperty('--pt',PTX_MS+'ms');
+  box.innerHTML=`<div class="ptx-nav" role="tablist">${PILL.map((P,i)=>`<button class="ptx-tab" role="tab" data-k="${i}"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${P.ico}</svg></span><span><b></b><span class="ds"></span><span class="ct"></span></span><i class="bar"></i></button>`).join('')}</div><div class="ptx-panel" id="ptxPanel" role="tabpanel"></div>`;
+  box.querySelectorAll('.ptx-tab').forEach((b,i)=>{const P=PILL[i];b.querySelector('b').textContent=t(P.t);b.querySelector('.ds').textContent=t(P.d);b.querySelector('.ct').textContent=P.s.length+' '+t('ptx_n');});
+  if(!box.dataset.wired){box.dataset.wired='1';
+    box.addEventListener('click',e=>{const b=e.target.closest('.ptx-tab');if(b)ptxGo(+b.dataset.k,true);});
+    box.addEventListener('keydown',e=>{if(!e.target.closest('.ptx-tab'))return;if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();ptxGo(ptxI+1,true);$$('#ptx .ptx-tab')[ptxI].focus();}if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();ptxGo(ptxI-1,true);$$('#ptx .ptx-tab')[ptxI].focus();}});
+    box.addEventListener('pointerenter',()=>{box.classList.add('hold');clearTimeout(ptxTimer);});
+    new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting&&!box.classList.contains('hold')){clearTimeout(ptxTimer);ptxTimer=setTimeout(()=>ptxGo(ptxI+1),PTX_MS);}}),{threshold:.3}).observe(box);}
+  ptxPanel();}
 window.renderPL=renderPL;
 const SVIMG={'estrategia-de-producto':['ph_board','ph_notes','vf_meeting'],'diseno-de-producto':['ph_wire','ph_desk','vf_happy'],'ingenieria-de-software':['ph_desk','ph_wire','ph_talk'],'devops-e-ingenieria-de-plataforma':['ph_banner','ph_desk','vf_meeting'],'qa-automatizado':['vf_happy','ph_desk','ph_notes'],'servicios-gestionados-de-it':['vf_meeting','ph_talk','ph_banner'],'administracion-de-cloud':['ph_talk','ph_desk','ph_board'],'continuidad-de-negocio-y-recuperacion-ante-desastres':['ph_notes','ph_board','vf_happy'],'microsoft-365':['ph_board','ph_banner','ph_wire']};
 const VIDS=[{id:'2OpaeNXWwS4',img:'yt_ducks',n:'GBH | Success & Belonging',r:'People · Purpose · Impact'},{id:'TqT6CjOBENg',img:'yt_marino',n:'Marino Ramírez',r:'vr1'},{id:'3XMr-FMUe0M',img:'yt_jope',n:'JoPe',r:'vr2'},{id:'RtEFKtIH78g',img:'yt_jairo',n:'Jairo Mancebo',r:'vr3'}];
