@@ -366,6 +366,24 @@ footer .seals span{font:500 .66rem/1 var(--mono);letter-spacing:.005em;border:1p
 .ptx-card:hover .go{background:var(--grad);color:#fff;border-color:transparent;transform:translateX(3px)}
 @media (max-width:900px){.ptx{grid-template-columns:1fr}.ptx-nav{position:static;flex-direction:row;overflow-x:auto;scrollbar-width:none;gap:.5rem;margin:0 calc(-1*var(--gut-l,16px));padding:0 var(--gut-l,16px) .2rem}.ptx-nav::-webkit-scrollbar{display:none}.ptx-tab{flex:0 0 auto;grid-template-columns:36px auto;padding:.7rem .9rem;align-items:center}.ptx-tab .ico{width:36px;height:36px;border-radius:11px}.ptx-tab .ico svg{width:18px;height:18px}.ptx-tab b{font-size:.98rem;white-space:nowrap}.ptx-tab .ds,.ptx-tab .ct{display:none}}
 @media (max-width:560px){.ptx-grid,.ptx-grid.c3{grid-template-columns:1fr}.ptx-card,.ptx-grid.c3 .ptx-card:first-child{flex-direction:row}.ptx-card .im,.ptx-grid.c3 .ptx-card:first-child .im{aspect-ratio:auto;width:92px;min-height:0;flex:none}.ptx-card .bd,.ptx-grid.c3 .ptx-card:first-child .bd{padding:.85rem}.ptx-card b,.ptx-grid.c3 .ptx-card:first-child b{font-size:1rem}.ptx-grid.c3 .ptx-card:first-child small{-webkit-line-clamp:2;font-size:.84rem}.ptx-head .n{font-size:2.4rem}.ptx-panel{padding:1rem}}
+/* Transición entre páginas */
+#pgx{position:fixed;inset:0;z-index:9000;pointer-events:none;visibility:hidden}
+#pgx i{position:absolute;inset:0;transform:translateY(101%)}
+#pgx .a{background:linear-gradient(120deg,#00ae42,#00a7e1)}
+#pgx .b{background:#002e6d;display:grid;place-items:center}
+#pgx .b span{font:700 clamp(2rem,5vw,3.4rem)/1 'Sora',system-ui,sans-serif;letter-spacing:-.04em;color:#fff;opacity:0;transform:translateY(14px)}
+#pgx.in{visibility:visible;pointer-events:auto}
+#pgx.in .a{animation:pgxIn .42s cubic-bezier(.7,0,.3,1) forwards}
+#pgx.in .b{animation:pgxIn .42s .07s cubic-bezier(.7,0,.3,1) forwards}
+#pgx.in .b span{animation:pgxTx .3s .3s ease forwards}
+#pgx.out{visibility:visible}
+#pgx.out .a,#pgx.out .b{transform:translateY(0)}
+#pgx.out .b{animation:pgxOut .5s cubic-bezier(.7,0,.3,1) forwards}
+#pgx.out .a{animation:pgxOut .5s .08s cubic-bezier(.7,0,.3,1) forwards}
+#pgx.out .b span{opacity:1;transform:none}
+@keyframes pgxIn{from{transform:translateY(101%)}to{transform:translateY(0)}}
+@keyframes pgxOut{from{transform:translateY(0)}to{transform:translateY(-101%)}}
+@keyframes pgxTx{to{opacity:1;transform:none}}
 /* Páginas */
 #viewHome [data-pg][hidden]{display:none!important}
 #viewHome:not([data-page="inicio"]){padding-top:70px}
@@ -876,7 +894,7 @@ footer .seals span{font:500 .66rem/1 var(--mono);letter-spacing:.005em;border:1p
     <div class="spiral-wrap" id="spiral" aria-label="Equipo de GBH">
       <div class="helix" id="helix"></div>
       <div class="spiral-hint" data-i="hint"></div>
-      <a class="badge20" href="#aniversario" aria-label="20 años"><svg viewBox="0 0 132 132" aria-hidden="true"><defs><path id="circ" d="M66,66 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs><text><textPath href="#circ" id="b20txt">20 años · 2006 - 2026 · People · Purpose · Impact ·</textPath></text></svg><div class="c">20<small data-i="an_y2"></small></div></a>
+      <a class="badge20" href="#aniversario" aria-label="20 años"><svg viewBox="0 0 132 132" aria-hidden="true"><defs><path id="circ" d="M66,66 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs><text><textPath href="#circ" id="b20txt">20 años - 2006 - 2026 - Personas - Propósito - Impact ·</textPath></text></svg><div class="c">20<small data-i="an_y2"></small></div></a>
     </div>
   </div>
 </section>
@@ -1046,9 +1064,9 @@ footer .seals span{font:500 .66rem/1 var(--mono);letter-spacing:.005em;border:1p
       <p data-i="ct_p"></p>
       <a class="btn btn-primary mag" href="#contacto"><span data-i="ct_btn"></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <div class="offices">
-        <div><b data-i="of1"></b>+1 (928) 366-5947<br>New York · Miami · Los Angeles</div>
+        <div><b data-i="of1"></b>+1 (928) 366-5947<br><span data-i="c_ny"></span> - <span data-i="c_mia"></span> - <span data-i="c_la"></span></div>
         <div><b data-i="of2"></b>Av. Roberto Pastoriza #60, Santo Domingo<br>+1 (809) 412-5947</div>
-        <div><b data-i="of3"></b>Lisboa · Ciudad de México</div>
+        <div><b data-i="of3"></b><span data-i="c_lis"></span> - <span data-i="c_cdmx"></span></div>
       </div>
     </div>
   </div>
@@ -1162,7 +1180,7 @@ footer .seals span{font:500 .66rem/1 var(--mono);letter-spacing:.005em;border:1p
       <div><h4 data-i="f_h2"></h4><ul><li><a href="#nosotros" data-i="fl4"></a></li><li><a href="#clientes" data-i="fl5"></a></li><li><a href="https://gbh.tech/es/blog/" target="_blank" rel="noopener" data-i="fl6"></a></li></ul></div>
       <div><h4 data-i="f_h3"></h4><ul><li><a href="#cultura" data-i="fl7"></a></li><li><a href="#empleos" data-i="fl8"></a></li><li><a href="#referir" data-i="fl9"></a></li></ul></div>
     </div>
-    <div class="base"><span>© 2026 GBH. People · Purpose · Impact.</span><span data-i="f_note"></span></div>
+    <div class="base"><span>© 2026 GBH. <span data-i="slogan"></span>.</span><span data-i="f_note"></span></div>
   </div>
 </footer>
 
@@ -1205,6 +1223,7 @@ footer .seals span{font:500 .66rem/1 var(--mono);letter-spacing:.005em;border:1p
 <script src="i18n.js"></script>
 <script src="i18n-v3.js"></script>
 <script src="services.js"></script>
+<script src="services-i18n.js"></script>
 <script>
 (()=>{
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1230,7 +1249,7 @@ function setLang(l){
   const s=$('.search input'); if(s) s.placeholder=t('f_search');
   renderFilters(); renderJobs(); if(current) renderJob(current);
   if(window.renderTabs){renderTabs();setPlay(pPlay);renderGlobeText();renderTL();aiLang();renderMedia();renderPL();}
-  $('#b20txt').textContent=`20 ${t('an_y')} · 2006 - 2026 · People · Purpose · Impact ·`;
+  $('#b20txt').textContent=t('b20');
   if(svCur&&shown==='svc'){renderSvc(svCur);arm(views.svc);}
 }
 
@@ -1243,12 +1262,12 @@ const clients=["Carnegie Mellon University","Spotify","fameit","Hello Alfred","P
 
 /* ---------- Espiral (lenta y fluida) ---------- */
 const people=["José Pérez","Héctor Aristy","Pablo Pérez","José Álvarez","José Rodríguez","Ángel Adames","Bernie Nicasio","Sherley Brito","Marcos Matos","José Lluberes","Alba Veloz","Francisco Zambrano"];
-const stats=[["20","GBH · 2006-2026","c-green"],["150+","People","c-navy"],["ISO","27001 · AENOR","c-cyan"],["96%","Great Place to Work","c-sky"],["300+","Projects","c-green"],["6","Cities · 3 continents","c-navy"]];
+const stats=[["20","GBH - 2006-2026","c-green"],["150+","@st_ppl","c-navy"],["ISO","27001 - AENOR","c-cyan"],["96%","Great Place to Work","c-sky"],["300+","@st_prj","c-green"],["6","@st_city","c-navy"]];
 const helix=$('#helix'), wrap=$('#spiral'); const items=[]; let si=0;
 people.forEach((p,i)=>{
   const c=document.createElement('div');c.className='card';
   c.innerHTML=`<img src="assets/emp${String(i).padStart(2,'0')}.jpg" alt="${p}" draggable="false"><div class="tag">${p}<i></i></div>`;items.push(c);
-  if(i%2===1&&si<stats.length){const[k,s,cl]=stats[si++];const d=document.createElement('div');d.className='card stat '+cl;d.innerHTML=`<div class="dot"></div><div><div class="k">${k}</div><div class="s">${s}</div></div>`;items.push(d);}
+  if(i%2===1&&si<stats.length){const[k,s,cl]=stats[si++];const d=document.createElement('div');d.className='card stat '+cl;d.innerHTML=`<div class="dot"></div><div><div class="k">${k}</div><div class="s"${s[0]==='@'?` data-i="${s.slice(1)}"`:''}>${s[0]==='@'?t(s.slice(1)):s}</div></div>`;items.push(d);}
 });
 items.forEach(c=>helix.appendChild(c));
 const N=items.length, TURNS=1.5, PERIOD=110; // segundos para que una tarjeta recorra toda la espiral
@@ -1395,7 +1414,7 @@ function renderSvc(sv){
   $('#svc').innerHTML=`<section class="sv-hero"><div class="in"><div class="crumb"><a href="#inicio">${t('sv_home')}</a><span>/</span><a href="#soluciones">${t('sv_sol')}</a><span>/</span><span>${c.title}</span></div>
   <div class="grid"><div><div class="eyebrow">${c.eyebrow||t(sv.pillar)}</div><h1>${c.title}</h1><p class="lead">${c.lead}</p>
   <div class="ctas" style="display:flex;flex-wrap:wrap;gap:.8rem"><a class="btn btn-primary" href="#contacto"><span>${t('sv_cta')}</span> ${arrow}</a><a class="btn btn-line" href="#soluciones">${t('sv_all')}</a></div></div>
-  <div class="sv-media rv"><div class="ph"><img src="assets/${SVIMG[sv.slug][0]}.jpg" alt=""></div><div class="kpi"><b>${c.kpi[0]}</b><span>${c.kpi[1]}</span></div><div class="iso"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>ISO 27001 · 20 ${t('an_y')}</div></div></div></div></section>
+  <div class="sv-media rv"><div class="ph"><img src="assets/${SVIMG[sv.slug][0]}.jpg" alt=""></div><div class="kpi"><b>${c.kpi[0]}</b><span>${c.kpi[1]}</span></div><div class="iso"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>ISO 27001 - 20 ${t('an_y')}</div></div></div></div></section>
   <section class="sec"><div class="in sv-claim"><div><h2 class="rv">${c.claim}</h2><div class="sv-strip rv"><img src="assets/${SVIMG[sv.slug][1]}.jpg" alt="" loading="lazy"><img src="assets/${SVIMG[sv.slug][2]}.jpg" alt="" loading="lazy"></div></div><div class="rv"><p>${c.intro}</p>${c.who?`<div class="eyebrow" style="margin-top:2rem">${t('sv_who')}</div><div class="who">${c.who.map(w=>`<span>${w}</span>`).join('')}</div>`:''}</div></div></section>
   ${reelHTML()}
   <section class="sec tint"><div class="in"><div class="sec-head rv"><div><div class="eyebrow">${t('sv_what')}</div><h2>${c.title}</h2></div></div>
@@ -1533,11 +1552,11 @@ function renderPL(){const box=$('#ptx');if(!box)return;
   ptxPanel();}
 window.renderPL=renderPL;
 const SVIMG={'estrategia-de-producto':['ph_board','ph_notes','vf_meeting'],'diseno-de-producto':['ph_wire','ph_desk','vf_happy'],'ingenieria-de-software':['ph_desk','ph_wire','ph_talk'],'devops-e-ingenieria-de-plataforma':['ph_banner','ph_desk','vf_meeting'],'qa-automatizado':['vf_happy','ph_desk','ph_notes'],'servicios-gestionados-de-it':['vf_meeting','ph_talk','ph_banner'],'administracion-de-cloud':['ph_talk','ph_desk','ph_board'],'continuidad-de-negocio-y-recuperacion-ante-desastres':['ph_notes','ph_board','vf_happy'],'microsoft-365':['ph_board','ph_banner','ph_wire']};
-const VIDS=[{id:'2OpaeNXWwS4',img:'yt_ducks',n:'GBH | Success & Belonging',r:'People · Purpose · Impact'},{id:'TqT6CjOBENg',img:'yt_marino',n:'Marino Ramírez',r:'vr1'},{id:'3XMr-FMUe0M',img:'yt_jope',n:'JoPe',r:'vr2'},{id:'RtEFKtIH78g',img:'yt_jairo',n:'Jairo Mancebo',r:'vr3'}];
+const VIDS=[{id:'2OpaeNXWwS4',img:'yt_ducks',n:'GBH | Success & Belonging',r:'slogan'},{id:'TqT6CjOBENg',img:'yt_marino',n:'Marino Ramírez',r:'vr1'},{id:'3XMr-FMUe0M',img:'yt_jope',n:'JoPe',r:'vr2'},{id:'RtEFKtIH78g',img:'yt_jairo',n:'Jairo Mancebo',r:'vr3'}];
 const playI='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5l13 7.5-13 7.5z"/></svg>';
-function reelHTML(){return `<section class="reel"><div class="kb">${['vf_meeting','vf_happy','ph_desk','ph_board'].map((x,i)=>`<img src="assets/${x}.jpg" alt="" style="animation-delay:${i*6}s">`).join('')}</div><div class="in"><div class="eyebrow">GBH · ${t('rl_eb')}</div><p class="rq">${t('rl_q')}</p><div class="acts"><button type="button" class="btn btn-glass" data-yt="2OpaeNXWwS4">${playI.replace('<svg','<svg style="width:16px;height:16px"')} ${t('vd_play')}</button><a class="btn btn-primary" href="#contacto"><span>${t('n_cta')}</span> ${arrow}</a></div></div></section>`;}
+function reelHTML(){return `<section class="reel"><div class="kb">${['vf_meeting','vf_happy','ph_desk','ph_board'].map((x,i)=>`<img src="assets/${x}.jpg" alt="" style="animation-delay:${i*6}s">`).join('')}</div><div class="in"><div class="eyebrow">GBH - ${t('rl_eb')}</div><p class="rq">${t('rl_q')}</p><div class="acts"><button type="button" class="btn btn-glass" data-yt="2OpaeNXWwS4">${playI.replace('<svg','<svg style="width:16px;height:16px"')} ${t('vd_play')}</button><a class="btn btn-primary" href="#contacto"><span>${t('n_cta')}</span> ${arrow}</a></div></div></section>`;}
 function vidsHTML(){const v=VIDS[0];return `<div class="sec-head rv"><div><div class="eyebrow">${t('vd_eb')}</div><h2>${t('vd_h')}</h2></div><p>${t('vd_p')}</p></div>
-<div class="vgrid"><button type="button" class="vcard rv" data-yt="${v.id}" aria-label="${t('vd_play')}: ${v.n}"><img src="assets/${v.img}.jpg" alt="" loading="lazy"><span class="play">${playI}</span><span class="cap"><b>${v.n}</b><i>${v.r}</i></span></button>
+<div class="vgrid"><button type="button" class="vcard rv" data-yt="${v.id}" aria-label="${t('vd_play')}: ${v.n}"><img src="assets/${v.img}.jpg" alt="" loading="lazy"><span class="play">${playI}</span><span class="cap"><b>${v.n}</b><i>${t(v.r)}</i></span></button>
 <div class="vside rv"><h3>${t('ts_h')}</h3>${VIDS.slice(1).map(x=>`<button type="button" class="vmini" data-yt="${x.id}"><span class="th"><img src="assets/${x.img}.jpg" alt="" loading="lazy"><span>${playI}</span></span><span><b>${x.n}</b><small>${t(x.r)}</small></span></button>`).join('')}<a class="btn btn-line" href="#empleos">${t('ts_btn')} ${arrow}</a></div></div>`;}
 function renderMedia(){$$('[data-reel]').forEach(el=>{el.innerHTML=reelHTML();});$$('[data-vids]').forEach(el=>{el.innerHTML=vidsHTML();});}
 const vm=$('#vmodal');
@@ -1584,7 +1603,7 @@ function renderJobs(){
 }
 function renderJob(j){
   $('#jdDep').textContent=t(j.dep); $('#jdTitle').textContent=j.title; $('#jdMeta').innerHTML=tags(j);
-  $('#jdInfo').innerHTML=`<div>${t('dep')}<b>${t(j.dep)}</b></div><div>${t('exp')}<b>${j.exp} ${t('yrs')}</b></div><div>${t('type')}<b>${t(j.type)} · ${t('remote')}</b></div><div>${t('date')}<b>${fmtDate(j.date)}</b></div>`;
+  $('#jdInfo').innerHTML=`<div>${t('dep')}<b>${t(j.dep)}</b></div><div>${t('exp')}<b>${j.exp} ${t('yrs')}</b></div><div>${t('type')}<b>${t(j.type)} - ${t('remote')}</b></div><div>${t('date')}<b>${fmtDate(j.date)}</b></div>`;
   const jph=['team0','team2','team1'][JOBS.indexOf(j)%3];
   $('#jdBody').innerHTML=`<figure class="jd-ph"><img src="assets/${jph}.jpg" alt=""><figcaption>${t('jd_ph')}</figcaption></figure><h2>${t('jd_desc')}</h2><p>${j.sum}</p>`+(j.resp?`<h2>${t('jd_resp')}</h2><ul>${j.resp.map(x=>`<li>${x}</li>`).join('')}</ul><h2>${t('jd_req')}</h2><ul>${j.req.map(x=>`<li>${x}</li>`).join('')}</ul>`:'')+`<div class="note">${L!=='en'?t('jd_en')+' ':''}${j.resp?'':t('jd_more')}</div>`;
 }
@@ -1625,7 +1644,15 @@ function setPage(pg){const v=$('#viewHome');const was=curPage;curPage=pg;v.datas
 const views={home:$('#viewHome'),jobs:$('#viewJobs'),job:$('#viewJob'),svc:$('#viewSvc')};
 let shown=null;
 function show(v){if(shown===v)return false;Object.entries(views).forEach(([k,el])=>{el.hidden=k!==v;});views[v].classList.remove('view');void views[v].offsetWidth;views[v].classList.add('view');shown=v;$('#navJobs').setAttribute('aria-current',v==='jobs'||v==='job'?'page':'false');if(v!=='home'){curPage=null;$$('.nav ul a').forEach(a=>{if(a.id!=='navJobs')a.setAttribute('aria-current','false')});}return true;}
+function routeKey(h){if(h==='contacto'||h==='sellos')return null;if(h.startsWith('servicio-')||h.startsWith('empleo-')||h==='empleos')return h;if(h==='vacantes'||h==='referir')return 'empleos';if(!h||PAGES.includes(h))return 'home:'+(h||'inicio');const el=document.getElementById(h);const sec=el&&el.closest('#viewHome [data-pg]');return sec?'home:'+sec.dataset.pg.split(' ')[0]:null;}
+let rkCur=null,pgxBusy=false;const pgx=document.createElement('div');pgx.id='pgx';pgx.setAttribute('aria-hidden','true');pgx.innerHTML='<i class="a"></i><i class="b"><span>gbh</span></i>';document.body.appendChild(pgx);
 function route(){
+  const k=routeKey(location.hash.slice(1));
+  if(!shown||reduce||!k||k===rkCur||pgxBusy){if(k)rkCur=k;routeNow();return;}
+  rkCur=k;pgxBusy=true;pgx.className='';void pgx.offsetWidth;pgx.className='in';
+  setTimeout(()=>{routeNow();pgx.className='';void pgx.offsetWidth;pgx.className='out';setTimeout(()=>{pgx.className='';pgxBusy=false;const k2=routeKey(location.hash.slice(1));if(k2&&k2!==rkCur)route();},620);},560);
+}
+function routeNow(){
   const h=location.hash.slice(1); arm($('#sellos'));
   if(h.startsWith('servicio-')){const sv=SERVICES.find(x=>'servicio-'+x.slug===h);if(sv){svCur=sv;show('svc');renderSvc(sv);scrollTo({top:0,behavior:'instant'});arm(views.svc);return;}}
   if(h==='empleos'){show('jobs');scrollTo({top:0,behavior:'instant'});arm(views.jobs);return;}
@@ -1659,6 +1686,6 @@ const url='https://wa.me/18094125947?text='+encodeURIComponent(lines);$('#bkWa')
 /* ---------- Inicio ---------- */
 let saved=null;try{saved=localStorage.getItem('gbh-lang')}catch(e){}
 setLang(saved||'es');
-route();
+rkCur=routeKey(location.hash.slice(1));routeNow();
 })();
 </script>
