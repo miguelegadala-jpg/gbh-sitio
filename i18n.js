@@ -4,9 +4,9 @@ window.LANGS = [
 window.T = {
 es: {
   n_sol:"Soluciones", n_cli:"Clientes", n_proc:"Cómo trabajamos", n_tal:"Cultura", n_jobs:"Empleos", n_cta:"Agenda una llamada", n_lang:"Idioma",
-  h_eb:"20 años · Santo Domingo → el mundo", h1a:"Ingeniería", h1b:"que mueve", h1c:"tu negocio.",
+  h_eb:"20 años creando tecnología desde Santo Domingo", h1a:"Ingeniería", h1b:"que mueve", h1c:"tu negocio.",
   h_lead:"Más de 150 especialistas en software, IA y operaciones de TI que se integran a tu equipo en 3 semanas y responden por resultados, no solo por requerimientos.",
-  h_cta1:"Agenda una llamada", h_cta2:"Conoce a nuestros clientes", m1:"Certificados por AENOR", m2:"Great Place to Work", m3:"Retención de clientes", hint:"Arrastra para girar · Conoce al equipo",
+  h_cta1:"Agenda una llamada", h_cta2:"Conoce a nuestros clientes", m1:"Certificados por AENOR", m2:"Great Place to Work", m3:"Retención de clientes", hint:"Arrastra para conocer al equipo",
   ribbon:["Ingeniería de software","IA aplicada","DevOps","QA automatizado","Cloud","Servicios gestionados de TI","Diseño de producto","Microsoft 365","Ciberseguridad"],
   a_eb:"Quiénes somos", a_h:"Dos décadas construyendo tecnología con <span class=\"grad-text\">propósito</span>.",
   a_p:"Somos la extensión técnica de CTOs y fundadores en EE. UU., Europa y Latinoamérica. Misma zona horaria, cultura cercana y un equipo que crece o se reduce según lo que necesites.",
@@ -45,7 +45,7 @@ es: {
 },
 en: {
   n_sol:"Solutions", n_cli:"Clients", n_proc:"How we work", n_tal:"Culture", n_jobs:"Careers", n_cta:"Book a call", n_lang:"Language",
-  h_eb:"20 years · Santo Domingo → the world", h1a:"Engineering", h1b:"that moves", h1c:"your business.",
+  h_eb:"20 years building technology from Santo Domingo", h1a:"Engineering", h1b:"that moves", h1c:"your business.",
   h_lead:"150+ specialists in software, AI and IT operations who join your team in 3 weeks and own outcomes, not just requirements.",
   h_cta1:"Book a call", h_cta2:"Meet our clients", m1:"Certified by AENOR", m2:"Great Place to Work", m3:"Client retention", hint:"Drag to spin · Meet the team",
   ribbon:["Software engineering","Applied AI","DevOps","Automated QA","Cloud","Managed IT services","Product design","Microsoft 365","Cybersecurity"],
@@ -86,7 +86,7 @@ en: {
 },
 pt: {
   n_sol:"Soluções", n_cli:"Clientes", n_proc:"Como trabalhamos", n_tal:"Cultura", n_jobs:"Carreiras", n_cta:"Agende uma conversa", n_lang:"Idioma",
-  h_eb:"20 anos · Santo Domingo → o mundo", h1a:"Engenharia", h1b:"que move", h1c:"o seu negócio.",
+  h_eb:"20 anos criando tecnologia a partir de Santo Domingo", h1a:"Engenharia", h1b:"que move", h1c:"o seu negócio.",
   h_lead:"Mais de 150 especialistas em software, IA e operações de TI que se integram à sua equipe em 3 semanas e respondem por resultados, não apenas por requisitos.",
   h_cta1:"Agende uma conversa", h_cta2:"Conheça nossos clientes", m1:"Certificados pela AENOR", m2:"Great Place to Work", m3:"Retenção de clientes", hint:"Arraste para girar · Conheça a equipe",
   ribbon:["Engenharia de software","IA aplicada","DevOps","QA automatizado","Cloud","Serviços gerenciados de TI","Design de produto","Microsoft 365","Cibersegurança"],
@@ -127,7 +127,7 @@ pt: {
 },
 fr: {
   n_sol:"Solutions", n_cli:"Clients", n_proc:"Notre méthode", n_tal:"Culture", n_jobs:"Carrières", n_cta:"Prendre rendez-vous", n_lang:"Langue",
-  h_eb:"20 ans · Saint-Domingue → le monde", h1a:"L'ingénierie", h1b:"qui fait avancer", h1c:"votre entreprise.",
+  h_eb:"20 ans de technologie depuis Saint-Domingue", h1a:"L'ingénierie", h1b:"qui fait avancer", h1c:"votre entreprise.",
   h_lead:"Plus de 150 spécialistes du logiciel, de l'IA et des opérations IT qui rejoignent votre équipe en 3 semaines et s'engagent sur des résultats, pas seulement sur des exigences.",
   h_cta1:"Prendre rendez-vous", h_cta2:"Découvrir nos clients", m1:"Certifiés par AENOR", m2:"Great Place to Work", m3:"Fidélisation client", hint:"Faites glisser pour tourner · Rencontrez l'équipe",
   ribbon:["Ingénierie logicielle","IA appliquée","DevOps","QA automatisée","Cloud","Services IT gérés","Design produit","Microsoft 365","Cybersécurité"],
@@ -168,7 +168,7 @@ fr: {
 },
 de: {
   n_sol:"Lösungen", n_cli:"Kunden", n_proc:"Arbeitsweise", n_tal:"Kultur", n_jobs:"Karriere", n_cta:"Termin vereinbaren", n_lang:"Sprache",
-  h_eb:"20 Jahre · Santo Domingo → die Welt", h1a:"Engineering,", h1b:"das Ihr Geschäft", h1c:"voranbringt.",
+  h_eb:"20 Jahre Technologie aus Santo Domingo", h1a:"Engineering,", h1b:"das Ihr Geschäft", h1c:"voranbringt.",
   h_lead:"Über 150 Spezialisten für Software, KI und IT-Betrieb, die sich in 3 Wochen in Ihr Team integrieren und für Ergebnisse einstehen, nicht nur für Anforderungen.",
   h_cta1:"Termin vereinbaren", h_cta2:"Unsere Kunden", m1:"Zertifiziert von AENOR", m2:"Great Place to Work", m3:"Kundenbindung", hint:"Ziehen zum Drehen · Lernen Sie das Team kennen",
   ribbon:["Softwareentwicklung","Angewandte KI","DevOps","Automatisierte QA","Cloud","Managed IT Services","Produktdesign","Microsoft 365","Cybersicherheit"],
@@ -209,7 +209,7 @@ de: {
 },
 it: {
   n_sol:"Soluzioni", n_cli:"Clienti", n_proc:"Come lavoriamo", n_tal:"Cultura", n_jobs:"Lavora con noi", n_cta:"Prenota una call", n_lang:"Lingua",
-  h_eb:"20 anni · Santo Domingo → il mondo", h1a:"Ingegneria", h1b:"che muove", h1c:"il tuo business.",
+  h_eb:"20 anni di tecnologia da Santo Domingo", h1a:"Ingegneria", h1b:"che muove", h1c:"il tuo business.",
   h_lead:"Oltre 150 specialisti in software, IA e operazioni IT che entrano nel tuo team in 3 settimane e rispondono dei risultati, non solo dei requisiti.",
   h_cta1:"Prenota una call", h_cta2:"Scopri i nostri clienti", m1:"Certificati da AENOR", m2:"Great Place to Work", m3:"Fidelizzazione clienti", hint:"Trascina per ruotare · Conosci il team",
   ribbon:["Ingegneria del software","IA applicata","DevOps","QA automatizzato","Cloud","Servizi IT gestiti","Product design","Microsoft 365","Cybersicurezza"],
