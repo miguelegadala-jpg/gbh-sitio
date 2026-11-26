@@ -211,10 +211,10 @@ h2{font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.06;letter-spacing:-.03em;fon
 
 /* Clientes */
 .clients{overflow:hidden}
-.c-rows{position:relative;display:flex;flex-direction:column;gap:14px;padding-block:1rem;-webkit-mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.c-rows{position:relative;display:flex;flex-direction:column;gap:14px;padding-block:4rem;margin-block:-3rem;-webkit-mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent),linear-gradient(180deg,transparent,#000 3rem,#000 calc(100% - 3rem),transparent);-webkit-mask-composite:source-in;mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent),linear-gradient(180deg,transparent,#000 3rem,#000 calc(100% - 3rem),transparent);mask-composite:intersect}
 .c-row{display:flex;width:max-content;gap:14px;animation:marq var(--d,70s) linear infinite}
 .c-row.rev{animation-direction:reverse}
-.pill{flex:none;width:220px;height:88px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);display:grid;place-items:center;padding:16px 26px;transition:transform .35s}
+.pill{flex:none;width:220px;height:88px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 24px -16px rgba(0,46,109,.28);display:grid;place-items:center;padding:16px 26px;transition:transform .35s}
 .pill img{max-height:48px;max-width:100%;width:auto;object-fit:contain}
 .pill:hover{transform:translateY(-3px)}
 .c-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;display:grid;place-items:center}
