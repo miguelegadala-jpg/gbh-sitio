@@ -32,7 +32,7 @@ html.gi-lock,html.gi-lock body{overflow:hidden}
 <script>
 (function(){
 var el=document.getElementById('gIntro');if(!el)return;
-var seen=false;try{seen=sessionStorage.getItem('gbh-intro')==='1'}catch(e){}
+var seen=false;
 var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(seen){el.remove();return}
 document.documentElement.classList.add('gi-lock');
