@@ -1339,6 +1339,7 @@ people.forEach((p,i)=>{
 });
 items.forEach(c=>helix.appendChild(c));
 const N=items.length, TURNS=1.5, PERIOD=110; // segundos para que una tarjeta recorra toda la espiral
+let enT0=reduce?-1e9:null; const EN_STEP=.075, EN_DUR=1.05; // entrada: caen desde arriba una por una, solo al cargar
 let D, pos=0, vel=reduce?0:1/PERIOD, drag=null, inertia=0, tiltX=0, tiltY=0, tx=0, ty=0, last=performance.now();
 function dims(){const w=wrap.clientWidth,h=wrap.clientHeight,small=innerWidth<900;return{R:small?Math.min(innerWidth*.36,170):Math.min(w*.4,285),H:h*(small?.95:1.04),cw:small?132:Math.max(140,Math.min(w*.27,172))};}
 D=dims(); addEventListener('resize',()=>{D=dims();});
@@ -1347,6 +1348,7 @@ function frame(now){
   if(!drag){pos+=vel*dt+inertia*dt; inertia*=Math.pow(.04,dt);}
   tiltX+=(tx-tiltX)*Math.min(1,dt*3); tiltY+=(ty-tiltY)*Math.min(1,dt*3);
   wrap.style.setProperty('--cw',D.cw+'px');
+  if(enT0===null){const gi=document.getElementById('gIntro');if(!gi||gi.classList.contains('out'))enT0=now;}
   const ax=(-6+tiltX)*Math.PI/180, az=(-10+tiltY*.3)*Math.PI/180, cx=Math.cos(ax), sx=Math.sin(ax), cz=Math.cos(az), sz=Math.sin(az), P=1500;
   for(let i=0;i<N;i++){
     let u=((i/N)+pos)%1; if(u<0)u+=1;
@@ -1357,8 +1359,10 @@ function frame(now){
     const edge=Math.min(1,Math.min(u,1-u)/.15);
     const face=Math.sin(rad)*22;
     const el=items[i];
-    el.style.transform=`translate3d(${Xr.toFixed(1)}px,${Yr.toFixed(1)}px,0) rotate(${(az*180/Math.PI).toFixed(2)}deg) scale(${s.toFixed(3)}) perspective(900px) rotateY(${face.toFixed(2)}deg)`;
-    el.style.opacity=(edge*(.06+.94*Math.pow((zn+1)/2,2.2))).toFixed(3);
+    let ep=1;if(enT0===null)ep=0;else if(enT0>-1e8){ep=Math.min(1,Math.max(0,((now-enT0)/1000-(N-1-i)*EN_STEP)/EN_DUR));}
+    const q1=ep-1, ee=1+2.1*q1*q1*q1+1.1*q1*q1, dropY=(1-ee)*-(innerHeight*.9), dropR=(1-ee)*-8;
+    el.style.transform=`translate3d(${Xr.toFixed(1)}px,${(Yr+dropY).toFixed(1)}px,0) rotate(${(az*180/Math.PI+dropR).toFixed(2)}deg) scale(${s.toFixed(3)}) perspective(900px) rotateY(${face.toFixed(2)}deg)`;
+    el.style.opacity=(Math.min(1,ep*3)*edge*(.06+.94*Math.pow((zn+1)/2,2.2))).toFixed(3);
     el.style.zIndex=Math.round(z2+1000);
   }
   requestAnimationFrame(frame);
