@@ -406,13 +406,12 @@ html.vt .rv{transition:none!important}
 .intro-t span.num.on{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.04em}
 @media (prefers-reduced-motion:reduce){.intro-t span{color:var(--ink)}}
 /* Títulos a máquina */
-.tw-c{position:relative;opacity:.14;transition:opacity .12s ease}
-.tw-c.on{opacity:1}
+.tw-c{position:relative;opacity:0;visibility:hidden}
+.tw-c.on{opacity:1;visibility:visible}
 .tw-c.cur::after{content:"";position:absolute;right:-.06em;top:.08em;bottom:.04em;width:.07em;min-width:2px;border-radius:2px;background:#00ae42;animation:twBlink .9s steps(1) infinite}
 .tw-c.cur.typing::after{animation:none}
 @keyframes twBlink{50%{opacity:0}}
 .hero h1 .line span.tw-c{display:inline;animation:none}
-.grad-text .tw-c:not(.on){opacity:1;color:#dde2e9;-webkit-text-fill-color:#dde2e9}
 html.tw-on .hero h1 .line>span{animation:none}
 /* Páginas */
 #viewHome [data-pg][hidden]{display:none!important}
