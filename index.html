@@ -405,6 +405,12 @@ html.vt .rv{transition:none!important}
 .intro-t span.on{color:var(--ink)}
 .intro-t span.num.on{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.04em}
 @media (prefers-reduced-motion:reduce){.intro-t span{color:var(--ink)}}
+/* Títulos a máquina */
+.tw-c{position:relative;opacity:.14;transition:opacity .12s ease}
+.tw-c.on{opacity:1}
+.tw-c.cur::after{content:"";position:absolute;right:-.06em;top:.08em;bottom:.04em;width:.07em;min-width:2px;border-radius:2px;background:#00ae42;animation:twBlink .9s steps(1) infinite}
+.tw-c.cur.typing::after{animation:none}
+@keyframes twBlink{50%{opacity:0}}
 /* Páginas */
 #viewHome [data-pg][hidden]{display:none!important}
 #viewHome:not([data-page="inicio"]){padding-top:70px}
@@ -1749,5 +1755,25 @@ const url='https://wa.me/18094125947?text='+encodeURIComponent(lines);$('#bkWa')
 let saved=null;try{saved=localStorage.getItem('gbh-lang')}catch(e){}
 setLang(saved||'es');
 rkCur=routeKey(location.hash.slice(1));routeNow();
+/* Títulos a máquina: letras una a una con cursor verde */
+(function(){
+  if(reduce||!('IntersectionObserver' in window))return;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){io.unobserve(e.target);type(e.target);}}),{threshold:.6});
+  function split(h2){
+    const w=document.createTreeWalker(h2,NodeFilter.SHOW_TEXT);const ns=[];while(w.nextNode())ns.push(w.currentNode);
+    ns.forEach(n=>{const f=document.createDocumentFragment();for(const ch of n.nodeValue){if(/\s/.test(ch)){f.appendChild(document.createTextNode(ch));}else{const s=document.createElement('span');s.className='tw-c';s.textContent=ch;f.appendChild(s);}}n.parentNode.replaceChild(f,n);});
+  }
+  function type(h2){
+    const cs=h2.querySelectorAll('.tw-c');if(!cs.length)return;const run=(h2._tw=(h2._tw||0)+1);
+    const step=Math.max(18,Math.min(48,1300/cs.length));let i=0,prev=null;
+    const tick=()=>{if(h2._tw!==run)return;if(prev)prev.classList.remove('cur','typing');
+      if(i>=cs.length){prev.classList.add('cur');setTimeout(()=>{if(h2._tw===run)prev.classList.remove('cur');},1800);return;}
+      const c=cs[i++];c.classList.add('on','cur','typing');prev=c;setTimeout(tick,step*(Math.random()*.6+.7));};
+    setTimeout(tick,220);
+  }
+  function prep(){document.querySelectorAll('h2').forEach(h2=>{if(h2.querySelector('.tw-c')||!h2.textContent.trim())return;split(h2);h2._tw=(h2._tw||0)+1;io.unobserve(h2);io.observe(h2);});}
+  let q=0;new MutationObserver(()=>{if(q)return;q=requestAnimationFrame(()=>{q=0;prep();});}).observe(document.body,{childList:true,subtree:true});
+  prep();
+})();
 })();
 </script>
