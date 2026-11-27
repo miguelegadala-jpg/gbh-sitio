@@ -595,10 +595,12 @@ html.tw-on .hero h1 .line>span{animation:none}
 
 
 /* ===== v3: 20 años ===== */
-.hero-pill{display:inline-flex;align-items:center;gap:.6rem;margin-bottom:1.1rem;padding:.4rem .9rem .4rem .4rem;border-radius:999px;text-decoration:none;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);font:600 .82rem/1 var(--display);color:var(--navy);animation:fade 1s .1s both;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.hero-pill{display:inline-flex;align-items:center;gap:.8rem;margin-bottom:1.3rem;padding:.5rem 1.15rem .5rem .5rem;border-radius:999px;text-decoration:none;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);font:600 1.02rem/1 var(--display);color:var(--navy);animation:fade 1s .1s both;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .hero-pill:hover{transform:translateY(-2px)}
-.hero-pill b{background:var(--grad);color:#fff;border-radius:999px;padding:.42rem .7rem;font:700 .78rem/1 var(--display);letter-spacing:.02em}
-.hero-pill svg{width:15px;height:15px}
+.hero-pill b{background:var(--grad);color:#fff;border-radius:999px;padding:.55rem .95rem;font:700 .96rem/1 var(--display);letter-spacing:.02em}
+.hero-pill svg{width:18px;height:18px}
+.hero-pill,.hero-pill b{white-space:nowrap}
+@media (max-width:560px){.hero-pill{font-size:.9rem;gap:.6rem;padding:.42rem .9rem .42rem .42rem}.hero-pill b{font-size:.84rem;padding:.5rem .75rem}.hero-pill svg{width:16px;height:16px}}
 .badge20{position:relative;flex:none;margin-right:.6rem;z-index:1;width:96px;height:96px;border-radius:50%;display:grid;place-items:center;text-decoration:none;background:var(--grad);box-shadow:0 22px 40px -18px rgba(0,120,90,.65);animation:fade 1s .8s both}
 .badge20 svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 22s linear infinite}
 .badge20 text{font:600 9.6px var(--mono);letter-spacing:.2em;fill:#fff;text-transform:uppercase}
